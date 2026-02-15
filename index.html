@@ -11,7 +11,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #020617;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
             color: #f8fafc;
         }
 
@@ -52,7 +52,6 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
         
-        /* 改进：为禁用状态添加更明显的视觉反馈 */
         input:disabled, select:disabled { 
             opacity: 0.4; 
             cursor: not-allowed;
@@ -71,20 +70,19 @@
                 <i class="fas fa-chart-line text-white text-2xl"></i>
             </div>
             <div>
-                <h1 class="text-2xl font-black tracking-tighter text-white uppercase italic">ArcPerps</h1>
-                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold">Confidential Risk & PnL Engine</p>
+                <h1 class="text-3xl font-black tracking-tighter text-white uppercase italic">ArcPerps</h1>
+                <p class="text-sm text-slate-500 uppercase tracking-[0.2em] font-bold">Confidential Risk & PnL Engine</p>
             </div>
         </div>
         <div class="flex flex-col items-end text-right">
             <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-full flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">MXE Secure Cluster Active</span>
+                <span class="text-xs font-black text-slate-300 uppercase tracking-widest">MXE Secure Cluster Active</span>
             </div>
         </div>
     </header>
 
     <main class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        
         <!-- Left: Position Input -->
         <div class="lg:col-span-4 space-y-6">
             <div class="glass-panel rounded-[2.5rem] p-8 space-y-6 shadow-2xl border-t-4 border-blue-500 relative overflow-hidden">
@@ -96,7 +94,7 @@
                 
                 <div class="space-y-4 relative z-10">
                     <div>
-                        <label class="block text-[10px] text-slate-500 mb-2 uppercase font-black tracking-widest">Entry Price (SOL/USD)</label>
+                        <label class="block text-xs text-slate-500 mb-2 uppercase font-black tracking-widest">Entry Price (SOL/USD)</label>
                         <div class="relative">
                             <input type="number" id="entryPrice" value="120.50" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-4 text-lg focus:border-blue-500 outline-none transition mono text-white">
                             <i class="fas fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-slate-700"></i>
@@ -104,7 +102,7 @@
                     </div>
 
                     <div>
-                        <label class="block text-[10px] text-slate-500 mb-2 uppercase font-black tracking-widest">Leverage (x)</label>
+                        <label class="block text-xs text-slate-500 mb-2 uppercase font-black tracking-widest">Leverage (x)</label>
                         <select id="leverage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-4 text-sm focus:border-blue-500 outline-none transition font-bold text-white appearance-none">
                             <option value="5">5x (Low Risk)</option>
                             <option value="10" selected>10x (Medium Risk)</option>
@@ -114,21 +112,21 @@
                     </div>
 
                     <div>
-                        <label class="block text-[10px] text-slate-500 mb-2 uppercase font-black tracking-widest">Collateral (USDC)</label>
+                        <label class="block text-xs text-slate-500 mb-2 uppercase font-black tracking-widest">Collateral (USDC)</label>
                         <div class="relative">
                             <input type="number" id="collateral" value="1000" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-4 text-lg focus:border-blue-500 outline-none transition mono text-white">
                             <i class="fas fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-slate-700"></i>
                         </div>
                     </div>
 
-                    <button id="tradeBtn" class="w-full bg-white text-slate-950 font-black py-5 rounded-2xl hover:bg-blue-50 transition active:scale-[0.95] flex items-center justify-center gap-3 mt-4 shadow-xl">
+                    <button id="tradeBtn" class="w-full bg-blue-500 text-white font-black py-5 rounded-2xl hover:bg-blue-600 transition active:scale-[0.95] flex items-center justify-center gap-3 mt-4 shadow-xl">
                         <i class="fas fa-bolt" id="btnIcon"></i> <span id="btnText">EXECUTE SHIELDED TRADE</span>
                     </button>
                 </div>
             </div>
 
             <div class="bg-blue-900/10 border border-blue-500/20 p-6 rounded-3xl">
-                <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                <p class="text-xs text-slate-400 leading-relaxed italic">
                     "在 MPC 模式下，您的强平价格和未实现盈亏仅在 Arcium MXE 内计算。外部观察者无法通过监控您的健康度来预设卖盘（Sniping），从而确保大宗交易的安全。"
                 </p>
             </div>
@@ -139,18 +137,18 @@
             <!-- Market Status Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="glass-panel p-6 rounded-3xl flex flex-col justify-center">
-                    <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">Mark Price</p>
+                    <p class="text-xs text-slate-500 uppercase font-black tracking-widest mb-1">Mark Price</p>
                     <div class="flex items-center gap-2">
                         <span class="text-2xl font-black text-white mono" id="markPrice">$120.50</span>
-                        <span class="text-[10px] text-green-500 font-bold"><i class="fas fa-caret-up"></i> LIVE</span>
+                        <span class="text-xs text-green-500 font-bold"><i class="fas fa-caret-up"></i> LIVE</span>
                     </div>
                 </div>
                 <div class="glass-panel p-6 rounded-3xl flex flex-col justify-center">
-                    <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">Risk Status</p>
-                    <span class="text-xs font-black text-slate-600 uppercase italic tracking-widest" id="riskStatus">Awaiting Init</span>
+                    <p class="text-xs text-slate-500 uppercase font-black tracking-widest mb-1">Risk Status</p>
+                    <span class="text-xs font-black text-green-500 uppercase italic tracking-widest" id="riskStatus">SAFE</span>
                 </div>
                 <div class="glass-panel p-6 rounded-3xl flex flex-col justify-center">
-                    <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">PnL (Confidential)</p>
+                    <p class="text-xs text-slate-500 uppercase font-black tracking-widest mb-1">PnL (Confidential)</p>
                     <div class="flex items-center gap-2">
                         <i class="fas fa-eye-slash text-slate-700 text-xs"></i>
                         <span class="text-sm font-bold text-slate-500 mono italic" id="pnlValue">SHIELDED</span>
@@ -160,7 +158,6 @@
 
             <!-- Visualization Area -->
             <div id="displayPanel" class="glass-panel rounded-[2.5rem] p-10 flex-1 flex flex-col relative overflow-hidden min-h-[450px]">
-                
                 <!-- Background Decoration -->
                 <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
                     <i class="fas fa-microchip text-[400px] text-blue-500"></i>
@@ -176,44 +173,11 @@
                         <p class="text-xs text-slate-600 max-w-sm mx-auto">启动交易后，Arcium 将在密文空间为您维护头寸并进行实时的清算风险评估。</p>
                     </div>
                 </div>
-
-                <!-- Content Area: Computing -->
-                <div id="computingState" class="hidden flex-1 flex flex-col items-center justify-center space-y-10 z-10 relative">
-                    <div id="scanner" class="scanner-line"></div>
-                    <div class="flex items-center gap-8 justify-center">
-                        <i class="fas fa-brain text-blue-500 text-5xl mxe-brain"></i>
-                        <div class="flex flex-col items-center gap-2">
-                            <span class="text-[10px] font-black text-blue-500 uppercase tracking-widest">Risk Assessment</span>
-                            <div class="h-[2px] w-32 bg-gradient-to-r from-blue-600 via-white to-transparent"></div>
-                            <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mono">MPC Fixed-Point uPnL</span>
-                        </div>
-                        <i class="fas fa-shield-halved text-slate-700 text-4xl"></i>
-                    </div>
-                    <div class="text-center space-y-4">
-                        <h3 class="font-black text-blue-400 uppercase tracking-[0.4em] text-sm animate-pulse">正在进行 MPC 盈亏计算...</h3>
-                        <div class="bg-slate-950/80 px-8 py-3 rounded-full border border-slate-800">
-                            <p class="text-[10px] font-mono text-blue-300" id="statusLog">Encrypting Entry and Leverage...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Telemetry Logs -->
-                <div class="mt-auto pt-8 border-t border-slate-800/50 relative z-10">
-                    <div class="flex justify-between items-center mb-4 px-1">
-                        <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                            <i class="fas fa-terminal"></i> Network Telemetry (ArcPerps-Core)
-                        </span>
-                        <span class="text-[9px] mono text-slate-600">PID: 5mjjZp...UtLc</span>
-                    </div>
-                    <div id="liveLogs" class="space-y-2 h-24 overflow-y-auto custom-scrollbar mono text-[10px] text-slate-600 px-1 leading-relaxed">
-                        <!-- Logs inject -->
-                    </div>
-                </div>
             </div>
         </div>
     </main>
 
-    <footer class="mt-16 text-slate-800 text-[10px] uppercase tracking-[0.5em] font-black italic">
+    <footer class="mt-16 text-slate-800 text-xs uppercase tracking-[0.5em] font-black italic">
         ArcPerps Confidential Protocol &copy; 2026 | Built on Arcium MXE
     </footer>
 

@@ -1,40 +1,55 @@
-# ArcPerps: MPC-Powered Anti-Manipulation Perpetual Exchange
+# ArcPerps: Privacy-Preserving Perpetual Exchange
 
-## 📉 Overview
+## 🌟 Introduction
 
-**ArcPerps** is a privacy-preserving perpetual futures protocol built on **Arcium** and **Solana**.
+ArcPerps is a next-generation decentralized perpetual futures protocol built on **Arcium** and **Solana**. By leveraging **Secure Multi-Party Computation (MPC)**, ArcPerps ensures that all trading data—including positions, orders, and liquidation checks—remains confidential. This eliminates adversarial strategies like liquidation sniping and MEV, fostering a fair and secure trading environment.
 
-Current decentralized perpetual exchanges (Perp DEXs) suffer from "Transparency Bias." Because all positions, entry prices, and liquidation points are visible on-chain, large traders are frequently targeted by **Liquidation Sniping** bots and MEV searchers. **ArcPerps** utilizes **Secure Multi-Party Computation (MPC)** to move the entire risk engine—including position management, PnL calculation, and liquidation checks—into a confidential computation layer.
+## 🚀 Key Features
 
-## 🚀 Live Deployment Status (Verified on v0.8.3)
+### 🔒 Privacy by Design
+- **Encrypted Positions:** Trader data is encrypted and secret-shared using x25519, ensuring complete confidentiality.
+- **Blind Risk Engine:** All computations, including PnL and liquidation checks, are performed in the encrypted domain.
 
-The protocol is fully operational and verified on the Arcium Devnet.
+### ⚡ High Performance
+- **Solana Integration:** Built on Solana’s high-speed blockchain, ArcPerps supports high-frequency trading with minimal latency.
+- **Dynamic Liquidation Checks:** Real-time risk assessments ensure accurate and fair liquidation decisions.
 
-### 🖥️ Interactive Demo
+### 🌍 Real-World Impact
+- **Fair Trading:** Prevents MEV and liquidation sniping, leveling the playing field for all traders.
+- **Institutional Adoption:** Privacy and security features meet the needs of institutional traders, driving deeper liquidity.
 
-[Launch ArcPerps Terminal](https://silent-builder-x.github.io/ArcPerps/)
+## 🛠 Technical Overview
 
-## 🧠 Core Innovation: The "Blind" Risk Engine
+### Core Components
+1. **Confidential Position Management:** Positions are encrypted and stored securely on-chain.
+2. **Encrypted Risk Engine:** The `check_risk` function calculates PnL and liquidation status without exposing sensitive data.
+3. **Event-Driven Architecture:** Risk events are emitted for real-time monitoring and response.
 
-ArcPerps implements a **Confidential Derivatives Core** using Arcis MPC circuits:
-
-- **Shielded Positions:** Trader leverage and entry prices are split into **Secret Shares** locally using x25519 before being sent to the cluster.
-- **Oblivious PnL Calculation:** The engine computes unrealized PnL (uPnL) and Equity entirely in the encrypted domain: $Equity = Collateral + \frac{(MarkPrice - EntryPrice) \times Size}{EntryPrice}$.
-- **MEV Resistance:** By hiding position proximity to liquidation, ArcPerps prevents predatory "Liquidation Sniping" and front-running orders, ensuring a fairer trading environment for institutions and whales.
-
-## 🛠 Build & Implementation
-
-```
+### Build Instructions
+```bash
 # Compile Arcis circuits and Solana program
 arcium build
 
 # Deploy to Cluster 456
 arcium deploy --cluster-offset 456 --recovery-set-size 4 --keypair-path ~/.config/solana/id.json -u d
-
 ```
 
-## 📄 Technical Specification
+### Deployment Status
+The protocol is fully deployed and operational on the **v0.8.3 Arcium Devnet**, showcasing its readiness for real-world use cases.
 
-- **Engine:** `check_perp_liquidation` (Arcis-MPC Circuit)
-- **Security:** Supported by Arcium's Multi-Party Execution and Recovery Set (Size 4).
-- **Compliance:** Built following **Internal V4 Standards** with verified `/// CHECK:` safety comments for Anchor IDL.
+## 🧠 Why ArcPerps?
+
+### Innovation
+ArcPerps redefines decentralized trading by integrating Arcium’s MPC technology, ensuring unparalleled privacy and fairness.
+
+### Technical Excellence
+The protocol combines advanced cryptographic techniques with Solana’s scalability, delivering a robust and efficient trading solution.
+
+### User-Centric Design
+A seamless and intuitive interface ensures that traders can focus on strategy without worrying about security.
+
+## 📄 Open Source Contribution
+
+ArcPerps is fully open-source and welcomes contributions from the community. Together, we can push the boundaries of decentralized trading.
+
+[GitHub Repository](https://github.com/silent-builder-x/ArcPerps)
