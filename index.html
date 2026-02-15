@@ -49,6 +49,7 @@
         }
 
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
         
         /* 改进：为禁用状态添加更明显的视觉反馈 */
@@ -128,7 +129,7 @@
 
             <div class="bg-blue-900/10 border border-blue-500/20 p-6 rounded-3xl">
                 <p class="text-[11px] text-slate-400 leading-relaxed italic">
-                    "在 FHE 模式下，您的强平价格和未实现盈亏仅在 Arcium MXE 内计算。外部观察者无法通过监控您的健康度来预设卖盘（Sniping），从而确保大宗交易的安全。"
+                    "在 MPC 模式下，您的强平价格和未实现盈亏仅在 Arcium MXE 内计算。外部观察者无法通过监控您的健康度来预设卖盘（Sniping），从而确保大宗交易的安全。"
                 </p>
             </div>
         </div>
@@ -184,12 +185,12 @@
                         <div class="flex flex-col items-center gap-2">
                             <span class="text-[10px] font-black text-blue-500 uppercase tracking-widest">Risk Assessment</span>
                             <div class="h-[2px] w-32 bg-gradient-to-r from-blue-600 via-white to-transparent"></div>
-                            <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mono">FHE Fixed-Point uPnL</span>
+                            <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mono">MPC Fixed-Point uPnL</span>
                         </div>
                         <i class="fas fa-shield-halved text-slate-700 text-4xl"></i>
                     </div>
                     <div class="text-center space-y-4">
-                        <h3 class="font-black text-blue-400 uppercase tracking-[0.4em] text-sm animate-pulse">正在进行同态盈亏计算...</h3>
+                        <h3 class="font-black text-blue-400 uppercase tracking-[0.4em] text-sm animate-pulse">正在进行 MPC 盈亏计算...</h3>
                         <div class="bg-slate-950/80 px-8 py-3 rounded-full border border-slate-800">
                             <p class="text-[10px] font-mono text-blue-300" id="statusLog">Encrypting Entry and Leverage...</p>
                         </div>
@@ -240,7 +241,7 @@
             "Encrypting raw trade intent locally...",
             "Lifting EntryPrice (u64) to SharedEncryptedStruct...",
             "Executing check_perp_liquidation circuit on MXE...",
-            "Computing homomorphic uPnL: size * (mark - entry)...",
+            "Computing oblivious uPnL: size * (mark - entry)...",
             "Sharding risk proof across Recovery Set (Size 4)...",
             "Finalizing verified callback on Solana Devnet..."
         ];
@@ -268,7 +269,7 @@
 
             // 改进：锁定所有交互
             toggleUIState(true);
-            btnText.innerText = "FHE ENCRYPTING...";
+            btnText.innerText = "MPC ENCRYPTING...";
             btnIcon.className = "fas fa-spinner fa-spin";
             
             idleState.classList.add('hidden');
