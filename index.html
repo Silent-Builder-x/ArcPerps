@@ -231,25 +231,33 @@
             const lev = parseInt(leverageSelect.value);
             const col = parseFloat(collateralInput.value);
 
-            // 改进：锁定所有交互
+            if (isNaN(entry) || isNaN(lev) || isNaN(col) || entry <= 0 || col <= 0) {
+                addLiveLog("⚠️ [ERROR] Invalid input values. Please check your entry price and collateral.", "text-red-500 font-bold");
+                return;
+            }
+
+            // Lock all interactions
             toggleUIState(true);
             btnText.innerText = "MPC ENCRYPTING...";
             btnIcon.className = "fas fa-spinner fa-spin";
-            
+
             idleState.classList.add('hidden');
             computingState.classList.remove('hidden');
 
-            addLiveLog(`Initiating trade: ${lev}x Position on SOL @ $${entry}`, "text-blue-400 font-bold");
+            addLiveLog(`🚀 Initiating trade: ${lev}x Position on SOL @ $${entry}`, "text-blue-400 font-bold");
 
             let phase = 0;
             const logInterval = setInterval(() => {
-                statusLog.innerText = phases[phase];
-                addLiveLog(`[MXE] ${phases[phase]}`);
-                phase++;
-                if (phase >= phases.length) clearInterval(logInterval);
+                if (phase < phases.length) {
+                    statusLog.innerText = phases[phase];
+                    addLiveLog(`[MXE] ${phases[phase]}`);
+                    phase++;
+                } else {
+                    clearInterval(logInterval);
+                }
             }, 700);
 
-            // Simulation loop
+            // Simulate trade completion
             setTimeout(() => {
                 const mark = entry * (1 + (Math.random() * 0.04 - 0.02));
                 markPriceEl.innerText = `$${mark.toFixed(2)}`;
@@ -259,13 +267,16 @@
                 pnlValueEl.className = "text-sm font-bold text-slate-500 mono italic";
 
                 addLiveLog("🎉 [SUCCESS] Position committed to Arcium state. Liquidation Sniping Protections active.", "text-green-500 font-black");
-                
-                // 改进：解锁交互
+
+                // Unlock interactions
                 toggleUIState(false);
                 btnText.innerText = "UPDATE SHIELDED TRADE";
                 btnIcon.className = "fas fa-sync-alt";
                 computingState.classList.add('hidden');
                 idleState.classList.remove('hidden');
+
+                // Additional user feedback
+                alert("Trade executed successfully! Your position is now shielded.");
             }, 5500);
         });
 
